@@ -5,8 +5,11 @@ class Player
   VERSION = "Default Ruby folding player"
 
   def bet_request(game_state)
+    player = game_state["players"].detect do |k, v|
+      v['name'] = "Thoughtful Duck"
+    end
     pp game_state, '*' * 80, game_state["current_buy_in"]
-    (game_state["current_buy_in"]..1000).to_a.shuffle.sample
+    (game_state["current_buy_in"]..player['stack']).to_a.shuffle.sample
   end
 
   def showdown(game_state)
