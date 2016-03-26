@@ -8,6 +8,7 @@ class Player
   def bet_request(game_state)
     puts "Current buy in #{game_state["current_buy_in"]}"
     return 5000 if cards(game_state).count > 4 && rain_man(game_state)['rank'] > 4
+    return 0 if cards(game_state).count > 4 && rain_man(game_state)['rank'] < 1
   	minimum_raise = 0
   	minimum_raise = 100 if test_pair(game_state)
   	minimum_raise = 250 if test_set(game_state)
