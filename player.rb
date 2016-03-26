@@ -3,7 +3,7 @@ require 'json'
 
 class Player
 
-  VERSION = "Default Ruby folding player"
+  VERSION = "BOM BOM"
 
   def bet_request(game_state)
     puts "Current buy in #{game_state["current_buy_in"]}"
@@ -12,7 +12,7 @@ class Player
   	minimum_raise = 0
   	minimum_raise = 100 if test_pair(game_state)
   	minimum_raise = 250 if test_set(game_state)
-  	minimum_raise = 350 if test_pair_pair(game_state)
+  	minimum_raise = 550 if test_pair_pair(game_state)
   	full_raise =!minimum_raise.zero? ? minimum_raise + game_state["current_buy_in"] : ((game_state["current_buy_in"] / 2).to_i..(game_state["current_buy_in"] + 20)).to_a.shuffle.sample
   rescue => err
   	puts err.inspect
