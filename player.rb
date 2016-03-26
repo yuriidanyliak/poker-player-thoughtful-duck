@@ -9,7 +9,9 @@ class Player
       v['name'] = "Thoughtful Duck"
     end
     pp game_state, '*' * 80, game_state["current_buy_in"]
-    (game_state["current_buy_in"]..player['stack']).to_a.shuffle.sample
+    (100..player['stack']).to_a.shuffle.sample
+  rescue
+    (100..1000).to_a.shuffle.sample
   end
 
   def showdown(game_state)
