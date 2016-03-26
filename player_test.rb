@@ -46,7 +46,20 @@ stub = {"tournament_id"=>"56e977803c01ba0003000002",
          "small_blind"=>10,
          "orbits"=>1,
          "dealer"=>0,
-         "community_cards"=>[],
+         "community_cards"=>[
+             {
+                 "rank": "4",
+                 "suit": "spades"
+             },
+             {
+                 "rank": "A",
+                 "suit": "hearts"
+             },
+             {
+                 "rank": "6",
+                 "suit": "clubs"
+             }
+         ],
          "current_buy_in"=>0,
          "pot"=>0}
 
