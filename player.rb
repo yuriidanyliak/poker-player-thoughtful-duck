@@ -16,7 +16,7 @@ class Player
   end
 
   def showdown(game_state)
-  	pp game_state
+  	p game_state
   end
 
   private
