@@ -10,9 +10,9 @@ class Player
     return 5000 if cards(game_state).count > 4 && rain_man(game_state)['rank'] > 4
     return 0 if cards(game_state).count > 4 && rain_man(game_state)['rank'] < 1
   	minimum_raise = 0
-  	minimum_raise = 100 if test_pair(game_state)
-  	minimum_raise = 400 if test_set(game_state)
-  	minimum_raise = 600 if test_pair_pair(game_state)
+  	minimum_raise = (70..200).to_a.shuffle.sample if test_pair(game_state)
+  	minimum_raise = (300..500).to_a.shuffle.sample if test_set(game_state)
+  	minimum_raise = (200..700).to_a.shuffle.sample if test_pair_pair(game_state)
   	full_raise =!minimum_raise.zero? ? minimum_raise + game_state["current_buy_in"] : ((game_state["current_buy_in"] / 2).to_i..(game_state["current_buy_in"] + 20)).to_a.shuffle.sample
   rescue => err
   	puts err.inspect
