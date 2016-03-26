@@ -29,7 +29,20 @@ stub = {"tournament_id"=>"56e977803c01ba0003000002",
                "stack"=>0,
                "status"=>"out",
                "bet"=>0,
-               "hole_cards"=>[],
+               "hole_cards"=>[
+                   {
+                       "rank": "7",
+    "suit": "hearts"
+},
+    {
+        "rank": "3",
+    "suit": "hearts"
+},
+    {
+        "rank": "9",
+    "suit": "hearts"
+}
+               ],
                "version"=>"Default Ruby folding player",                                                                                                                                                                             "id"=>3},
               {"name"=>"MadFoldBot",
                "stack"=>0,
@@ -49,7 +62,7 @@ stub = {"tournament_id"=>"56e977803c01ba0003000002",
          "community_cards"=>[
              {
                  "rank": "4",
-                 "suit": "spades"
+                 "suit": "hearts"
              },
              {
                  "rank": "A",
@@ -57,7 +70,7 @@ stub = {"tournament_id"=>"56e977803c01ba0003000002",
              },
              {
                  "rank": "6",
-                 "suit": "clubs"
+                 "suit": "hearts"
              }
          ],
          "current_buy_in"=>0,
