@@ -9,8 +9,10 @@ class Player
   # end
 
   def bet_request(game_state)
-  	minimum_raise =  has_pair_or_set?(game_state) ? 100 + (game_state["current_buy_in"]..1000).to_a.shuffle.sample : (100..1000).to_a.shuffle.sample
-  	minimum_raise
+  	minimum_raise = 0
+  	minimum_raise = 100 if has_pair?(game_state)
+  	minimum_raise = 250 if has_set_or_two_pairs?(game_state)
+  	full_raise =  !minimum_raise.zero? ? minimum_raise + (game_state["current_buy_in"]..1000).to_a.shuffle.sample : (100..1000).to_a.shuffle.sample
   rescue => err
   	puts err.inspect
     (100..1000).to_a.shuffle.sample
@@ -28,10 +30,17 @@ class Player
   	end
   end
 
-  def has_pair_or_set?(game_state)
+  def has_pair?(game_state)
   	all_cards = player(game_state)['hole_cards'] + game_state['community_cards']
 	only_rank = all_cards.map {|card| card['rank']}
-	return false if only_rank.uniq.count == all_cards.count
+	return false if all_cards.count - only_rank.uniq.count == 1
+	true
+  end
+
+  def has_set_or_two_pairs?(game_state)
+  	all_cards = player(game_state)['hole_cards'] + game_state['community_cards']
+	only_rank = all_cards.map {|card| card['rank']}
+	return false if all_cards.count - only_rank.uniq.count == 2
 	true
   end
 end
