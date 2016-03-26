@@ -11,9 +11,9 @@ class Player
   def bet_request(game_state)
     puts "Current buy in #{game_state["current_buy_in"]}"
   	minimum_raise = 0
-  	minimum_raise = 100 if has_pair?(game_state)
-  	minimum_raise = 250 if has_set_or_two_pairs?(game_state)
-    minimum_raise = 300 if player(game_state)['hole_cards'].uniq { |card| card['rank'] }.size == 1
+  	minimum_raise += 100 if has_pair?(game_state)
+  	minimum_raise += 250 if has_set_or_two_pairs?(game_state)
+    minimum_raise += 300 if player(game_state)['hole_cards'].uniq { |card| card['rank'] }.size == 1
   	full_raise =  !minimum_raise.zero? ? minimum_raise + game_state["current_buy_in"] : ((game_state["current_buy_in"] / 2).to_i..game_state["current_buy_in"]).to_a.shuffle.sample
   rescue => err
   	puts err.inspect
