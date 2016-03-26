@@ -12,7 +12,7 @@ class Player
   	minimum_raise = 0
   	minimum_raise = 100 if has_pair?(game_state)
   	minimum_raise = 250 if has_set_or_two_pairs?(game_state)
-  	full_raise =  !minimum_raise.zero? ? minimum_raise + (game_state["current_buy_in"]..1000).to_a.shuffle.sample : (100..1000).to_a.shuffle.sample
+  	full_raise =  !minimum_raise.zero? ? minimum_raise + (game_state["current_buy_in"]..1000).to_a.shuffle.sample : ((game_state["current_buy_in"] / 2).to_i..(game_state["current_buy_in"] + (game_state["current_buy_in"] / 2).to_i)).to_a.shuffle.sample
   rescue => err
   	puts err.inspect
     (100..1000).to_a.shuffle.sample
