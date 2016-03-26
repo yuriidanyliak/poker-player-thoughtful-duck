@@ -9,9 +9,6 @@ class Player
   # end
 
   def bet_request(game_state)
-  	minimum_raise =  has_pair_or_set? ? 400 : (game_state["current_buy_in"]..200).to_a.shuffle.sample
-  	game_state['current_buy_in'] + minimum_raise
-  rescue
     (100..1000).to_a.shuffle.sample
   end
 
